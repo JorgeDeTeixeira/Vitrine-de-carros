@@ -2,7 +2,7 @@ body {
     font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #2ecc71, #3498db);
+    background: linear-gradient(to right, #00B894, #D2D7D3);
     background-attachment: fixed;
     background-size: cover;
     color: #fff;
@@ -11,7 +11,7 @@ body {
 .welcome-section {
     text-align: center;
     padding: 4em 1em;
-    color: white;
+    color: rgb(0, 0, 0);
     animation: fadeInUp 1.5s ease-in-out;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
@@ -52,27 +52,27 @@ body {
 }
 
 .welcome-section a {
-    background-color: #27ae60;
-    color: white;
+    background-color: #C0C0C0;
+    color: #000000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-right: 10px;
 }
 
 .add-car-button {
-    background-color: #2ecc71;
+    background-color: #00B894;
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .welcome-section a:hover,
 .add-car-button:hover {
-    background-color: #219d54;
+    background-color: #A0A0A0;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .footer {
-    background-color: #333;
-    color: white;
+    background-color: #000000;
+    color: #C0C0C0;
     text-align: center;
     padding: 1em;
     position: fixed;

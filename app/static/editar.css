@@ -2,16 +2,16 @@ body {
     font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #2ecc71, #3498db);
+    background: linear-gradient(to right, #00b894, #d2d7d3);
     background-attachment: fixed;
     background-size: cover;
-    color: #fff;
+    color: #000000;
 }
 
 .edit-car-form {
     text-align: center;
     padding: 4em 1em;
-    color: white;
+    color: rgb(0, 0, 0);
     animation: fadeInUp 1.5s ease-in-out;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
@@ -52,13 +52,15 @@ label {
 .form-control {
     width: 100%;
     padding: 0.5em;
-    border: 1px solid #ddd;
+    border: 1px solid #000000;
     border-radius: 5px;
 }
 
 .btn-primary {
-    background-color: #27ae60;
-    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #c0c0c0;
+    color: rgb(0, 0, 0);
     padding: 0.8em 2em;
     border: none;
     border-radius: 5px;
@@ -67,23 +69,24 @@ label {
 }
 
 .btn-primary:hover {
-    background-color: #219d54;
+    background-color: #A0A0A0;
 }
 
 /* Style for the "Voltar para a Vitrine" link */
 .back-to-vitrine {
+    font-weight: bold;
     display: inline-block;
     margin-top: 1em;
     padding: 0.5em 1em;
     text-decoration: none;
-    background-color: #3498db;
-    color: white;
+    background-color: #c0c0c0;
+    color: rgb(0, 0, 0);
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out;
 }
 
 .back-to-vitrine:hover {
-    background-color: #2980b9;
+    background-color: #A0A0A0;
 }
 
 /* Responsive adjustments */

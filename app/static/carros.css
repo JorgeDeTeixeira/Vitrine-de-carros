@@ -2,10 +2,10 @@ body {
     font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #2ecc71, #3498db);
+    background: linear-gradient(to right, #00B894, #D2D7D3);
     background-attachment: fixed;
     background-size: cover;
-    color: #fff;
+    color: #000000;
 }
 
 .car-container {
@@ -51,15 +51,15 @@ body {
 .car-card a {
     display: inline-block;
     padding: 0.8em 1.5em;
-    background-color: #2ecc71;
-    color: #ffffff;
+    background-color: #00B894;
+    color: #000000;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .car-card a:hover {
-    background-color: #05411b;
+    background-color: #079276;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -70,14 +70,14 @@ body {
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    background: linear-gradient(to right, #2ecc71, #27ae60);
-    color: white;
+    background: linear-gradient(to right, #C0C0C0, #a7a7a7);
+    color: rgb(0, 0, 0);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 2em; /* Espaçamento entre os cards e o botão Adicionar Novo Carro */
+    margin-top: 2em;
 }
 
 .add-car-button:hover {
-    background-color: #05411b;
+    background-color: #A0A0A0;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
@@ -155,20 +155,21 @@ body {
 
 .pagination a,
 .pagination span {
+    font-weight: bold;
     display: inline-block;
     padding: 0.5em 1em;
     margin-right: 5px;
-    background-color: #27ae60;
-    color: white;
+    background-color: #C0C0C0;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out;
 }
 
 .pagination a:hover {
-    background-color: #10a04c;
+    background-color: #A0A0A0;
 }
 
 .pagination .current {
-    background-color: #055024;
+    background-color: #00B894;
 }

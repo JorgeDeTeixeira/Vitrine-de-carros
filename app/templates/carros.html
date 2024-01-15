@@ -13,14 +13,17 @@
         {% include 'navbar.html' %}
 
         <div class="car-container">
-            <h1 style="color: rgb(255, 255, 255);">Vitrine de Carros</h1>
+            <h1 style="color: rgb(255, 255, 255)">Vitrine de Carros</h1>
 
             <div class="car-list">
                 {% for carro in carros %}
                 <div class="car-card">
                     <img src="{{ carro.img }}" alt="Imagem do Carro" />
                     <h2>{{ carro.nome }} {{ carro.modelo }}</h2>
-                    <a href="{{ url_for('visualizarCarro', carro_id=carro.id) }}">Ver detalhes</a>
+                    <a
+                        href="{{ url_for('visualizarCarro', carro_id=carro.id) }}"
+                        >Ver detalhes</a
+                    >
                 </div>
                 {% endfor %}
             </div>

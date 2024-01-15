@@ -66,4 +66,3 @@ def deletarCarro(carro_id):
     db.session.commit()
 
     return redirect(url_for('listarCarros'))
-

@@ -71,7 +71,7 @@ label {
     background-color: #219d54;
 }
 
-a {
+#back {
     display: inline-block;
     margin-top: 1em;
     padding: 0.5em 1em;
@@ -82,7 +82,7 @@ a {
     transition: background-color 0.3s ease-in-out;
 }
 
-a:hover {
+#back:hover {
     background-color: #219d54;
 }
 

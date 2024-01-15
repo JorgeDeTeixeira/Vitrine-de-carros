@@ -81,6 +81,46 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
+#message {
+    text-align: center;
+}
+
+/* Estilo para as mensagens flash */
+.flash-messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.flash-messages li {
+    padding: 1em;
+    margin: 0.5em 0;
+    border-radius: 5px;
+    width: 50%; /* Ajuste conforme necessário */
+    margin: 0 auto;
+}
+
+/* Estilo para diferentes categorias de mensagens flash */
+.success {
+    background-color: #27ae60; /* Verde */
+    color: white;
+}
+
+.error {
+    background-color: #c0392b; /* Vermelho escuro */
+    color: white;
+}
+
+.info {
+    background-color: #3498db; /* Azul */
+    color: white;
+}
+
+.warning {
+    background-color: #f39c12; /* Amarelo escuro */
+    color: white;
+}
+
 /* Responsividade */
 @media screen and (max-width: 768px) {
     .car-list {

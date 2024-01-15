@@ -38,7 +38,7 @@ def adicionarCarro():
         db.session.commit()
 
         flash('Carro adicionado com sucesso!', 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('listarCarros'))
 
     return render_template('adicionar.html', form=form)
 
@@ -59,7 +59,7 @@ def editarCarro(carro_id):
         db.session.commit()
 
         flash('Carro editado com sucesso!', 'success')
-        return redirect(url_for('index'))
+        return redirect(url_for('listarCarros'))
 
     return render_template('editar.html', carro=carro, form=form)
 
@@ -70,4 +70,5 @@ def deletarCarro(carro_id):
     db.session.delete(carro)
     db.session.commit()
 
+    flash('Carro deletado com sucesso!', 'success')
     return redirect(url_for('listarCarros'))

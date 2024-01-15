@@ -12,6 +12,18 @@
     <body>
         {% include 'navbar.html' %}
 
+        <div id="message" style="margin-top: 5px">
+            <!-- No seu template base ou template específico -->
+            {% with messages = get_flashed_messages(with_categories=true) %} {%
+            if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %} {% endwith %}
+        </div>
+
         <div class="car-container">
             <h1 style="color: rgb(255, 255, 255)">Vitrine de Carros</h1>
 

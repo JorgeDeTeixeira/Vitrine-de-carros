@@ -1,7 +1,22 @@
+import logging
 from flask import render_template, request, redirect, url_for, flash
+from sqlalchemy.exc import SQLAlchemyError
 from app import app, db
 from app.forms import CarroForm
 from app.models import Carro
+
+# Configurar o sistema de logging
+logging.basicConfig(level=logging.ERROR)
+logger = logging.getLogger(__name__)
+
+
+def handle_error_and_redirect(route, error_message, redirect_route='index', log_error=True):
+    flash(error_message, 'error')
+
+    if log_error:
+        logger.error(f'Error in {route}: {error_message}')
+
+    return redirect(url_for(redirect_route))
 
 
 @app.route('/')
@@ -11,34 +26,45 @@ def index():
 
 @app.route('/carros')
 def listarCarros():
-    carros = Carro.query.all()
-    return render_template('carros.html', carros=carros)
+    try:
+        carros = Carro.query.all()
+        return render_template('carros.html', carros=carros)
+    except SQLAlchemyError as e:
+        return handle_error_and_redirect('listarCarros', f'Erro ao listar carros: {str(e)}', log_error=True)
 
 
 @app.route('/carro/<int:carro_id>')
 def visualizarCarro(carro_id):
-    carro = Carro.query.get(carro_id)
-    return render_template('carro.html', carro=carro)
+    try:
+        carro = Carro.query.get(carro_id)
+        if not carro:
+            raise Exception(f'Carro com ID {carro_id} não encontrado')
+        return render_template('carro.html', carro=carro)
+    except SQLAlchemyError as e:
+        return handle_error_and_redirect('visualizarCarro', f'Erro ao visualizar carro: {str(e)}', 'listarCarros')
 
 
 @app.route('/adicionar', methods=['GET', 'POST'])
 def adicionarCarro():
     form = CarroForm()
 
-    if form.validate_on_submit():
-        novo_carro = Carro(
-            marca=form.marca.data,
-            modelo=form.modelo.data,
-            nome=form.nome.data,
-            ano=form.ano.data,
-            preco=form.preco.data,
-            img=form.img.data
-        )
-        db.session.add(novo_carro)
-        db.session.commit()
+    try:
+        if form.validate_on_submit():
+            novo_carro = Carro(
+                marca=form.marca.data,
+                modelo=form.modelo.data,
+                nome=form.nome.data,
+                ano=form.ano.data,
+                preco=form.preco.data,
+                img=form.img.data
+            )
+            db.session.add(novo_carro)
+            db.session.commit()
 
-        flash('Carro adicionado com sucesso!', 'success')
-        return redirect(url_for('listarCarros'))
+            flash('Carro adicionado com sucesso!', 'success')
+            return redirect(url_for('listarCarros'))
+    except SQLAlchemyError as e:
+        return handle_error_and_redirect('adicionarCarro', f'Erro ao adicionar carro: {str(e)}', log_error=True)
 
     return render_template('adicionar.html', form=form)
 
@@ -48,27 +74,39 @@ def editarCarro(carro_id):
     carro = Carro.query.get(carro_id)
     form = CarroForm(obj=carro)
 
-    if form.validate_on_submit():
-        carro.marca = form.marca.data
-        carro.modelo = form.modelo.data
-        carro.nome = form.nome.data
-        carro.ano = form.ano.data
-        carro.preco = form.preco.data
-        carro.img = form.img.data
+    try:
+        if not carro:
+            raise Exception(f'Carro com ID {carro_id} não encontrado')
 
-        db.session.commit()
+        if form.validate_on_submit():
+            carro.marca = form.marca.data
+            carro.modelo = form.modelo.data
+            carro.nome = form.nome.data
+            carro.ano = form.ano.data
+            carro.preco = form.preco.data
+            carro.img = form.img.data
 
-        flash('Carro editado com sucesso!', 'success')
-        return redirect(url_for('listarCarros'))
+            db.session.commit()
+
+            flash('Carro editado com sucesso!', 'success')
+            return redirect(url_for('listarCarros'))
+    except SQLAlchemyError as e:
+        return handle_error_and_redirect('editarCarro', f'Erro ao editar carro: {str(e)}', log_error=True)
 
     return render_template('editar.html', carro=carro, form=form)
 
 
 @app.route('/deletar/<int:carro_id>')
 def deletarCarro(carro_id):
-    carro = Carro.query.get(carro_id)
-    db.session.delete(carro)
-    db.session.commit()
+    try:
+        carro = Carro.query.get(carro_id)
+        if not carro:
+            raise Exception(f'Carro com ID {carro_id} não encontrado')
 
-    flash('Carro deletado com sucesso!', 'success')
-    return redirect(url_for('listarCarros'))
+        db.session.delete(carro)
+        db.session.commit()
+
+        flash('Carro deletado com sucesso!', 'success')
+        return redirect(url_for('listarCarros'))
+    except SQLAlchemyError as e:
+        return handle_error_and_redirect('deletarCarro', f'Erro ao deletar carro: {str(e)}', 'listarCarros')

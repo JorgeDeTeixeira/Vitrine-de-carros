@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vitrine de Carros</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='carros.css') }}"
+        />
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+
+        <div class="car-container">
+            <h1 style="color: black;">Vitrine de Carros</h1>
+
+            <div class="car-list">
+                {% for carro in carros %}
+                <div class="car-card">
+                    <img src="{{ carro.img }}" alt="Imagem do Carro" />
+                    <h2>{{ carro.marca }} {{ carro.modelo }}</h2>
+                    <a href="{{ url_for('visualizarCarro', carro_id=carro.id) }}">Ver detalhes</a>
+                </div>
+                {% endfor %}
+            </div>
+
+            <a href="{{ url_for('adicionarCarro') }}" class="add-car-button"
+                >Adicionar Novo Carro</a
+            >
+        </div>
+    </body>
+</html>

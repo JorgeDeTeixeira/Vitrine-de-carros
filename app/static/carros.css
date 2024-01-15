@@ -1,0 +1,112 @@
+/* carros.css */
+
+body {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #2ecc71, #3498db);
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+.car-container {
+    text-align: center;
+    padding: 2em;
+}
+
+.car-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.car-card {
+    background: linear-gradient(to bottom, #ffffff, #f4f4f4);
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+    transition: box-shadow 0.3s ease-in-out;
+    width: 300px; /* Largura fixa para manter os cards consistentes */
+}
+
+.car-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.car-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1em;
+}
+
+.car-card h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: #000000; /* Cor destacada para o título */
+}
+
+.car-card a {
+    display: inline-block;
+    padding: 0.8em 1.5em;
+    background-color: #2ecc71;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.car-card a:hover {
+    background-color: #05411b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-car-button {
+    display: inline-block;
+    padding: 1.5em 3em;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background: linear-gradient(to right, #2ecc71, #27ae60);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 2em; /* Espaçamento entre os cards e o botão Adicionar Novo Carro */
+}
+
+.add-car-button:hover {
+    background-color: #05411b;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .car-list {
+        justify-content: center; /* Centraliza os cards em telas menores */
+    }
+
+    .car-card {
+        width: 100%;
+        margin: 1em 0;
+    }
+
+    .car-card img {
+        margin-bottom: 0.5em;
+    }
+
+    .car-card h2 {
+        font-size: 1.2em;
+    }
+
+    .car-card a {
+        padding: 0.6em 1em;
+    }
+
+    .add-car-button {
+        padding: 1.2em 2em;
+    }
+}

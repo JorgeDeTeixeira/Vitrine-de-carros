@@ -1,0 +1,118 @@
+/* adicionar.css */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #2ecc71, #3498db);
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+.welcome-section {
+    text-align: center;
+    padding: 4em 1em;
+    color: white;
+    animation: fadeInUp 1s ease-in-out;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 2em auto;
+    max-width: 80%;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-section h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+form {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+form input {
+    width: 100%;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+    font-size: 1em;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+form input:focus {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    outline: none; /* Removendo a borda padrão do foco */
+}
+
+button {
+    display: inline-block;
+    padding: 1.5em 3em;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #27ae60;
+    color: white;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #219d54;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+a {
+    display: block;
+    margin-top: 1em;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #2ecc71;
+    text-decoration: underline;
+}
+
+/* Estilos adicionados para tornar a página mais responsiva */
+
+@media screen and (max-width: 768px) {
+    .welcome-section {
+        padding: 3em 1em;
+        max-width: 90%;
+    }
+
+    form input,
+    button {
+        padding: 1em;
+    }
+}

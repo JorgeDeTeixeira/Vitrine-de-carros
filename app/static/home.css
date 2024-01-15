@@ -1,0 +1,105 @@
+/* home.css */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #2ecc71, #3498db);
+    background-attachment: fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+.welcome-section {
+    text-align: center;
+    padding: 4em 1em;
+    color: white;
+    animation: fadeInUp 1s ease-in-out;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 2em auto;
+    max-width: 80%;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-section h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+.welcome-section p {
+    font-size: 1.5em;
+    margin-bottom: 2em;
+}
+
+.welcome-section a,
+.add-car-button {
+    display: inline-block;
+    padding: 1.5em 3em;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.welcome-section a {
+    background-color: #27ae60;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-right: 10px;
+}
+
+.add-car-button {
+    background-color: #2ecc71;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-section a:hover,
+.add-car-button:hover {
+    background-color: #219d54;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Adicionando regras de mídia para responsividade */
+
+@media screen and (max-width: 768px) {
+    .welcome-section {
+        padding: 3em 1em;
+        max-width: 90%;
+    }
+
+    .welcome-section h1 {
+        font-size: 2.5em;
+    }
+
+    .welcome-section p {
+        font-size: 1.2em;
+    }
+
+    .welcome-section a,
+    .add-car-button {
+        padding: 1.2em 2em;
+    }
+}

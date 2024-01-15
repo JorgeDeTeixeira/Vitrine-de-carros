@@ -1,0 +1,93 @@
+<style>
+    /* styles.css */
+
+    body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar {
+        background-color: #222;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em 2em;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar a img {
+        width: 50px;
+        height: auto;
+    }
+
+    .navbar ul {
+        list-style: none;
+        display: flex;
+    }
+
+    .navbar li {
+        margin: 0 15px;
+    }
+
+    .navbar a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        position: relative;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .navbar a:hover {
+        color: #27ae60;
+    }
+
+    .navbar a::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #27ae60;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        transition: width 0.3s;
+    }
+
+    .navbar a:hover::after {
+        width: 100%;
+    }
+
+    /* Adicionando transição suave para a barra de navegação */
+    .navbar {
+        transition: background-color 0.3s ease-in-out,
+            box-shadow 0.3s ease-in-out;
+    }
+
+    /* Efeito de sombra sutil nos itens da lista durante o hover */
+    .navbar li:hover {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Ajuste de margens nos itens da lista para uma aparência mais espaçada */
+    .navbar li {
+        margin: 0 15px;
+    }
+</style>
+
+<!-- Estrutura HTML para a barra de navegação -->
+<nav class="navbar">
+    <a href="{{ url_for('index') }}">
+        <img
+            src="https://i.pinimg.com/564x/b5/74/04/b574045f483218530f7f284802a03ec7.jpg"
+            alt="Logo"
+            style="width: 50px; height: auto"
+        />
+    </a>
+    <ul>
+        <li><a href="{{ url_for('index') }}">Página Inicial</a></li>
+        <li><a href="{{ url_for('adicionarCarro') }}">Adicionar Carro</a></li>
+        <li><a href="{{ url_for('listarCarros') }}">Ver Vitrine</a></li>
+    </ul>
+</nav>

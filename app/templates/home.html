@@ -1,0 +1,30 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="pr-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vitrine de Carros</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='home.css') }}"
+        />
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+
+        <div class="welcome-section">
+            <h1>Bem-vindo à nossa Vitrine de Carros</h1>
+            <p>Descubra nossa incrível seleção de carros.</p>
+            <a href="{{ url_for('listarCarros') }}">Explorar Carros</a>
+            <a href="{{ url_for('adicionarCarro') }}" class="add-car-button"
+                >Adicionar Carro</a
+            >
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Vitrine de Carros. Todos os direitos reservados.</p>
+        </div>
+    </body>
+</html>

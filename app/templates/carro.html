@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Detalhes do Carro</title>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='carro.css') }}"
+        />
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+
+        <div class="car-details-container">
+            <h1>Detalhes do Carro</h1>
+
+            {% if carro %}
+            <div class="car-details">
+                <strong
+                    >{{ carro.marca }} {{ carro.modelo }} ({{ carro.ano
+                    }})</strong
+                >
+                <br />
+                Nome: {{ carro.nome }}
+                <br />
+                Preço: R$ {{ carro.preco }}
+                <br />
+                <img src="{{ carro.img }}" alt="Imagem do Carro" />
+                <br />
+                <a
+                    href="{{ url_for('editarCarro', carro_id=carro.id) }}"
+                    class="details-link"
+                    >Editar</a
+                >
+                <a
+                    href="{{ url_for('deletarCarro', carro_id=carro.id) }}"
+                    onclick="return confirm('Tem certeza que deseja deletar este carro?')"
+                    class="details-link"
+                    >Deletar</a
+                >
+                <br />
+                <a href="{{ url_for('index') }}" class="details-link"
+                    >Voltar para a Vitrine</a
+                >
+            </div>
+            {% else %}
+            <p>Carro não encontrado.</p>
+            {% endif %}
+        </div>
+    </body>
+</html>

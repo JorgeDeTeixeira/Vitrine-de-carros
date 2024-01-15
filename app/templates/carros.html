@@ -28,7 +28,7 @@
             <h1 style="color: rgb(255, 255, 255)">Vitrine de Carros</h1>
 
             <div class="car-list">
-                {% for carro in carros %}
+                {% for carro in carros.items %}
                 <div class="car-card">
                     <img src="{{ carro.img }}" alt="Imagem do Carro" />
                     <h2>{{ carro.nome }} {{ carro.modelo }}</h2>
@@ -38,6 +38,28 @@
                     >
                 </div>
                 {% endfor %}
+            </div>
+
+            <!-- Adicione a navegação entre páginas -->
+            <div class="pagination">
+                {% if carros.has_prev %}
+                <a href="{{ url_for('listarCarros', pagina=carros.prev_num) }}"
+                    >« Anterior</a
+                >
+                {% endif %} {% for num in carros.iter_pages() %} {% if num %} {%
+                if num == carros.page %}
+                <span class="current">{{ num }}</span>
+                {% else %}
+                <a href="{{ url_for('listarCarros', pagina=num) }}"
+                    >{{ num }}</a
+                >
+                {% endif %} {% else %}
+                <span class="ellipsis">...</span>
+                {% endif %} {% endfor %} {% if carros.has_next %}
+                <a href="{{ url_for('listarCarros', pagina=carros.next_num) }}"
+                    >Próxima »</a
+                >
+                {% endif %}
             </div>
 
             <a href="{{ url_for('adicionarCarro') }}" class="add-car-button"

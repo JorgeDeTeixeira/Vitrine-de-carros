@@ -9,6 +9,7 @@ from app.models import Carro
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
+ITENS_POR_PAGINA = 6
 
 def handle_error_and_redirect(route, error_message, redirect_route='index', log_error=True):
     flash(error_message, 'error')
@@ -27,8 +28,13 @@ def index():
 @app.route('/carros')
 def listarCarros():
     try:
-        carros = Carro.query.all()
-        return render_template('carros.html', carros=carros)
+        # Obter o número da página a partir dos parâmetros da requisição
+        pagina = request.args.get('pagina', 1, type=int)
+
+        # Paginação dos carros
+        carros_paginados = Carro.query.paginate(page=pagina, per_page=ITENS_POR_PAGINA, error_out=False)
+
+        return render_template('carros.html', carros=carros_paginados)
     except SQLAlchemyError as e:
         return handle_error_and_redirect('listarCarros', f'Erro ao listar carros: {str(e)}', log_error=True)
 

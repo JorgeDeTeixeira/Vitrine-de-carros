@@ -1,13 +1,13 @@
 /* detalhes_carro.css */
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     margin: 0;
     padding: 0;
     background: linear-gradient(to right, #2ecc71, #3498db);
     background-attachment: fixed;
     background-size: cover;
-    color: #000000;
+    color: #ffffff;
 }
 
 .car-details-container {
@@ -46,14 +46,14 @@ body {
 .car-details p {
     font-size: 1.2em;
     margin-bottom: 0.8em;
-    color: #000000; /* Cor para as informações do carro */
+    color: #ffffff; /* Cor para as informações do carro */
 }
 
 .details-link {
     display: inline-block;
     padding: 0.8em 1.5em;
     background-color: #219d54;
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     border-radius: 5px;
     margin: 0.5em;

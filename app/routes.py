@@ -35,7 +35,7 @@ def adicionarCarro():
         db.session.add(novo_carro)
         db.session.commit()
 
-        return redirect(url_for('index'))
+        return redirect(url_for('listarCarros'))
 
     return render_template('adicionar.html')
 
@@ -65,5 +65,5 @@ def deletarCarro(carro_id):
     db.session.delete(carro)
     db.session.commit()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('listarCarros'))
 

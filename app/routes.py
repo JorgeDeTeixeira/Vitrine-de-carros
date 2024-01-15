@@ -1,5 +1,6 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash
 from app import app, db
+from app.forms import CarroForm
 from app.models import Carro
 
 
@@ -22,41 +23,45 @@ def visualizarCarro(carro_id):
 
 @app.route('/adicionar', methods=['GET', 'POST'])
 def adicionarCarro():
-    if request.method == 'POST':
-        marca = request.form['marca']
-        modelo = request.form['modelo']
-        nome = request.form['nome']
-        ano = int(request.form['ano'])
-        preco = float(request.form['preco'])
-        img = request.form['img']
+    form = CarroForm()
 
-        novo_carro = Carro(marca=marca, modelo=modelo,
-                           nome=nome, ano=ano, preco=preco, img=img)
+    if form.validate_on_submit():
+        novo_carro = Carro(
+            marca=form.marca.data,
+            modelo=form.modelo.data,
+            nome=form.nome.data,
+            ano=form.ano.data,
+            preco=form.preco.data,
+            img=form.img.data
+        )
         db.session.add(novo_carro)
         db.session.commit()
 
-        return redirect(url_for('listarCarros'))
+        flash('Carro adicionado com sucesso!', 'success')
+        return redirect(url_for('index'))
 
-    return render_template('adicionar.html')
+    return render_template('adicionar.html', form=form)
 
 
 @app.route('/editar/<int:carro_id>', methods=['GET', 'POST'])
 def editarCarro(carro_id):
     carro = Carro.query.get(carro_id)
+    form = CarroForm(obj=carro)
 
-    if request.method == 'POST':
-        carro.marca = request.form['marca']
-        carro.modelo = request.form['modelo']
-        carro.nome = request.form['nome']
-        carro.ano = int(request.form['ano'])
-        carro.preco = float(request.form['preco'])
-        carro.img = request.form['img']
+    if form.validate_on_submit():
+        carro.marca = form.marca.data
+        carro.modelo = form.modelo.data
+        carro.nome = form.nome.data
+        carro.ano = form.ano.data
+        carro.preco = form.preco.data
+        carro.img = form.img.data
 
         db.session.commit()
 
+        flash('Carro editado com sucesso!', 'success')
         return redirect(url_for('index'))
 
-    return render_template('editar.html', carro=carro)
+    return render_template('editar.html', carro=carro, form=form)
 
 
 @app.route('/deletar/<int:carro_id>')

@@ -19,56 +19,45 @@
                 method="post"
                 action="{{ url_for('editarCarro', carro_id=carro.id) }}"
             >
-                <label for="marca">Marca:</label>
-                <input
-                    type="text"
-                    id="marca"
-                    name="marca"
-                    value="{{ carro.marca }}"
-                    required
-                />
-                <label for="modelo">Modelo:</label>
-                <input
-                    type="text"
-                    id="modelo"
-                    name="modelo"
-                    value="{{ carro.modelo }}"
-                    required
-                />
-                <label for="nome">Nome:</label>
-                <input
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    value="{{ carro.nome }}"
-                    required
-                />
-                <label for="ano">Ano:</label>
-                <input
-                    type="number"
-                    id="ano"
-                    name="ano"
-                    value="{{ carro.ano }}"
-                    required
-                />
-                <label for="preco">Preço (R$):</label>
-                <input
-                    type="number"
-                    step="0.01"
-                    id="preco"
-                    name="preco"
-                    value="{{ carro.preco }}"
-                    required
-                />
-                <label for="img">Link da Imagem:</label>
-                <input
-                    type="url"
-                    id="img"
-                    name="img"
-                    value="{{ carro.img }}"
-                    required
-                />
-                <button type="submit">Salvar</button>
+                {{ form.hidden_tag() }} {{ form.csrf_token }}
+
+                <div class="form-group">
+                    {{ form.marca.label(for="marca") }} {{
+                    form.marca(class="form-control", id="marca",
+                    required="required", value=carro.marca) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.modelo.label(for="modelo") }} {{
+                    form.modelo(class="form-control", id="modelo",
+                    required="required", value=carro.modelo) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.nome.label(for="nome") }} {{
+                    form.nome(class="form-control", id="nome",
+                    required="required", value=carro.nome) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.ano.label(for="ano") }} {{
+                    form.ano(class="form-control", id="ano",
+                    required="required", value=carro.ano) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.preco.label(for="preco") }} {{
+                    form.preco(class="form-control", id="preco",
+                    required="required", value=carro.preco) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.img.label(for="img") }} {{
+                    form.img(class="form-control", id="img",
+                    required="required", value=carro.img) }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
             </form>
 
             <a href="{{ url_for('index') }}" class="back-to-vitrine"
